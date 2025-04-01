@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#main">Main Page</a></li>
+                <li><a href="#pricing">Cennik</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#first">Sekcja 1</a></li>
+                <li><a href="#second">Sekcja 2</a></li>
+                <li><a href="#third">Sekcja 3</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="first">
+        <h1>CHATA GÓRY</h1>
+    </section>
+    
+    <section class="second">
+        <div class="section">
+            <div class="text">
+                <h2>Opis do sekcji 2</h2>
+                <p>Tu możesz dodać jakiś opis dotyczący tej sekcji.</p>
+            </div>
+            <div class="image"></div>
+        </div>
+    </section>
+
+
+    <section class="pricing">
+        <h2>Cennik</h2>
+        <p>Tu wstaw cennik...</p>
+    </section>
+
+    <section class="contact">
+        <h2>Kontakt</h2>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Imię" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Twoja wiadomość" required></textarea>
+            <button type="submit">Wyślij</button>
+        </form>
+    </section>
+
+    <button id="scrollTopBtn">⬆</button>
+
+</body>
+</html>
