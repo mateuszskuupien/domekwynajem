@@ -1,3 +1,10 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     font-weight: 100;
@@ -6,23 +13,38 @@ body {
     text-align: center;
 }
 
-.first, .second, .third, .fourth, .fifth, .pricing, .contact {
+h2, p {
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+button, .scrollToTopBtn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Section Styles */
+.first, .second, .third, .fourth, .fifth, .contact {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 .first {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('/static/images/section1.jpg') center/cover no-repeat;
     animation: moveBackground 45s ease-in-out infinite;
-    color: white;
-    font-size: 2.5rem;
     flex-direction: column;
 }
 
-.buttons-container { 
+.buttons-container {
     display: flex;
     justify-content: space-between;
     gap: 50px;
@@ -30,16 +52,13 @@ body {
 }
 
 button {
-    font-family: 'Inter', sans-serif;
-    font-weight: 100;
-    padding: 10px 50px; /* Wygodna szerokość */
+    padding: 1rem 3rem;
     background: rgba(66, 66, 66, 0.7);
-    font-size: 18px;
+    font-size: 1.125rem;
     letter-spacing: 1.2px;
     color: white;
     border-radius: 20px;
     border: none;
-    transition: background-color 0.5s ease-in-out;
     position: relative;
 }
 
@@ -47,6 +66,7 @@ button:hover {
     background: #1f1b18;
 }
 
+/* Star Animations */
 .star-1, .star-2, .star-3, .star-4, .star-5, .star-6 {
     position: absolute;
     filter: drop-shadow(0 0 0 #c9b79c);
@@ -54,12 +74,12 @@ button:hover {
     transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
 }
 
-.star-1 { top: 20%; left: 20%; width: 25px; }
-.star-2 { top: 45%; left: 45%; width: 15px; transition: all 1s cubic-bezier(0, 0.4, 0, 1.01); }
-.star-3 { top: 40%; left: 40%; width: 5px; }
-.star-4 { top: 20%; left: 40%; width: 8px; }
-.star-5 { top: 25%; left: 45%; width: 15px; }
-.star-6 { top: 5%; left: 50%; width: 5px; }
+.star-1 { top: 20%; left: 20%; width: 1.5rem; }
+.star-2 { top: 45%; left: 45%; width: 1rem; }
+.star-3 { top: 40%; left: 40%; width: 0.5rem; }
+.star-4 { top: 20%; left: 40%; width: 0.75rem; }
+.star-5 { top: 25%; left: 45%; width: 1rem; }
+.star-6 { top: 5%; left: 50%; width: 0.5rem; }
 
 button:hover .star-1 { top: -80%; left: -30%; filter: drop-shadow(0 0 10px #ededed); z-index: 2; }
 button:hover .star-2 { top: -25%; left: 10%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
@@ -70,31 +90,30 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
 
 .fil0 { fill: #d8c9ac; }
 
+/* Scroll-to-Top Button */
 .scrollToTopBtn {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
 }
 
 .scrollToTopBtn:hover {
     background-color: #0056b3;
 }
 
+/* Section Layout */
 .section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #555555, #3f3f3f);
 }
 
 .reveal {
@@ -114,8 +133,8 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
     width: 100%;
 }
 
-.section .text,
-.section .image-container {
+/* Text and Image Containers */
+.section .text, .section .image-container {
     width: 50%;
     height: 100%;
 }
@@ -129,29 +148,31 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
     text-align: right;
     line-height: 3rem;
     letter-spacing: 3px;
+    background: linear-gradient(to bottom, #555555, #3f3f3f);
 }
+
 .text-wrapper {
-    padding: 50px;
+    padding: 3rem;
 }
+
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
+/* Contact Section */
 .contact {
     background: linear-gradient(to bottom, #2c2c2c, #1e1e1e);
     color: #fff;
-    text-align: center;
-    padding: 60px 20px;
-    height: auto;
+    padding: 4rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .contact-wrapper {
-    max-width: 600px;
+    max-width: 37.5rem;
     width: 100%;
     background: rgba(255, 255, 255, 0.05);
-    padding: 40px;
+    padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
@@ -159,19 +180,19 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
 
 .contact h2 {
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .contact-subtitle {
     font-size: 1.1rem;
     color: #ccc;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
 }
 
 .contact form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .contact input,
@@ -179,10 +200,10 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
     border: none;
-    padding: 15px;
+    padding: 1rem;
     border-radius: 8px;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .contact textarea { resize: none; }
@@ -198,34 +219,35 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
     color: #1e1e1e;
     font-weight: bold;
     border: none;
-    padding: 15px;
+    padding: 1rem;
     font-size: 1.1rem;
     border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .contact button:hover {
     background-color: #E76F51;
 }
 
+/* Background Images */
+.photo2 { 
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/section2.jpg') center/cover no-repeat;
+}
+
+.photo3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/section3.jpg') center/cover no-repeat;
+}
+
+.photo4 {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/section4.jpg') center/cover no-repeat;
+}
+
+.photo5 {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/images/section5.jpg') center/cover no-repeat;
+}
+
+/* Keyframe Animations */
 @keyframes moveBackground {
     0% { background-position: center top; }
     50% { background-position: center bottom; }
     100% { background-position: center top; }
-}
-
-.photo2{
-    background: url('/static/images/section2.jpg') center/cover no-repeat;
-}
-
-.photo3 {
-    background: url('/static/images/section3.jpg') center/cover no-repeat;
-}
-
-.photo4 {
-    background: url('/static/images/section4.jpg') center/cover no-repeat;
-}
-.photo5 {
-    background: url('/static/images/section5.jpg') center/cover no-repeat;
 }
