@@ -93,3 +93,8 @@ function smoothScrollTo(element, duration) {
 
   requestAnimationFrame(animationScroll);
 }
+
+// Funkcja przewijania na samą górę
+document.getElementById('scrollToTopBtn').addEventListener('click', function () {
+  smoothScrollTo(document.body, 1200); // Przewijanie do góry strony
+});

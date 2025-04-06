@@ -36,7 +36,7 @@
                   <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
                 </div>
               </button>
-              <button onclick="scrollToSection('pricing')">CENNIK
+              <button onclick="scrollToSection('fifth')">CENNIK
                 <div class="star-1">
                   <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs></defs><g id="Layer_x0020_1"><metadata id="CorelCorpID_0Corel-Layer"></metadata><path d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z" class="fil0"></path></g></svg>
                 </div>
@@ -131,7 +131,7 @@
           <div class="image-container photo5"></div>
           <div class="text">
             <div class="text-wrapper text-left">
-                <h2 class="section-heading">SEKCJA 5</h2>
+                <h2 class="section-heading">CENNIK</h2>
                 <p>Tu możesz dodać jakiś opis dotyczący tej sekcji.</p>
             </div>
           </div>
@@ -139,16 +139,31 @@
       </section>    
     <div class="separator"></div>
     <section class="contact reveal" id="contact">
-        <div class="contact-wrapper">
-          <h2>Skontaktuj się z nami</h2>
+      <div class="contact-content">
+        <!-- Mapa po lewej -->
+        <div class="contact-map">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=20.035%2C49.460%2C20.085%2C49.480&layer=mapnik&marker=49.471444%2C20.049722"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      
+        <!-- Formularz po prawej -->
+        <div class="contact-form">
+          <h2>KONTAKT</h2>
           <p class="contact-subtitle">Masz pytania? Chętnie odpowiemy!</p>
           <form method="POST">
-            <input type="text" name="name" placeholder="Imię i nazwisko" required>
-            <input type="email" name="email" placeholder="Adres email" required>
-            <textarea name="message" rows="5" placeholder="Twoja wiadomość..." required></textarea>
-            <button type="submit">Wyślij wiadomość</button>
+            <input type="text" name="name" placeholder="IMIĘ..." required>
+            <input type="email" name="email" placeholder="ADRES E-MAIL..." required>
+            <textarea name="message" rows="5" placeholder="ZAPYTAJ O DOSTĘPNOŚĆ..." required></textarea>
+            <button type="submit">WYŚLIJ</button>
           </form>
+          <p class="contact-address">ALEJA TYSIĄCLECIA 54, 34-400 NOWY TARG</p>
         </div>
-      </section>
+      </div>
+    </section>
+    <button id="scrollToTopBtn" class="scrollToTopBtn">↑</button>
 </body>
 </html>
