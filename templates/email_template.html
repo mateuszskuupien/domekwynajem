@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowa wiadomość z formularza</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        p { margin: 8px 0; }
+        .label { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📩 Nowa wiadomość z formularza</h2>
+        <p><span class="label">Imię i nazwisko:</span> {{ name }}</p>
+        <p><span class="label">Email:</span> {{ email }}</p>
+        <p><span class="label">Treść wiadomości:</span><br>{{ message|safe }}</p>
+    </div>
+</body>
+</html>

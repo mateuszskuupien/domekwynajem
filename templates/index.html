@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?display=swap&family=Lato:ital,wght@0,300;0,700;1,300;1,700&family=Inter:ital,wght@0,200;0,300;0,500;1,200;1,300;1,500&family=JetBrains+Mono:ital,wght@0,800;1,800" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 
@@ -154,16 +155,23 @@
         <div class="contact-form">
           <h2>KONTAKT</h2>
           <p class="contact-subtitle">Masz pytania? Chętnie odpowiemy!</p>
-          <form method="POST">
-            <input type="text" name="name" placeholder="IMIĘ..." required>
-            <input type="email" name="email" placeholder="ADRES E-MAIL..." required>
-            <textarea name="message" rows="5" placeholder="ZAPYTAJ O DOSTĘPNOŚĆ..." required></textarea>
+          <form id="contact-form" method="POST">
+            <input type="text" name="name" id="name" placeholder="IMIĘ...">
+            <input type="email" name="email" id="email" placeholder="ADRES E-MAIL...">
+            <textarea name="message" id="message" rows="5" placeholder="ZAPYTAJ O DOSTĘPNOŚĆ..."></textarea>
+            <div id="captcha-container" class="hide">
+              <div class="g-recaptcha" data-sitekey="6LfY6hQrAAAAAJpLNbEjVR5GfncaAfjO_RcyDBTl"></div>
+            </div>
             <button type="submit">WYŚLIJ</button>
           </form>
           <p class="contact-address">ALEJA TYSIĄCLECIA 54, 34-400 NOWY TARG</p>
+          <div id="error-popup" class="error-popup">
+            <p id="error-message">Proszę wypełnić wszystkie pola poprawnie!</p>
+          </div>
         </div>
       </div>
     </section>
     <button id="scrollToTopBtn" class="scrollToTopBtn">↑</button>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

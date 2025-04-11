@@ -299,3 +299,45 @@ button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac)
     50% { background-position: center bottom; }
     100% { background-position: center top; }
 }
+/* Styl dla popupu błędu */
+.error-popup {
+    position: fixed;
+    bottom: 20px;
+    left: -300px; /* Początkowa pozycja poza ekranem */
+    background-color: #f44336; /* Jaśniejszy czerwony */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 18px; /* Większa czcionka */
+    z-index: 9999;
+    min-width: 250px;
+    text-align: center;
+    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Animacja wślizgiwania i znikania */
+    opacity: 0; /* Początkowo popup jest niewidoczny */
+  }
+  
+  /* Po dodaniu klasy .show popup wślizguje się na ekran */
+  .error-popup.show {
+    opacity: 1; /* Zwiększamy przezroczystość */
+    left: 20px; /* Końcowa pozycja na ekranie */
+  }
+  
+  /* Kiedy ma zniknąć */
+  .error-popup.hide {
+    opacity: 0;
+    left: -300px; /* Wślizguje się poza ekran */
+    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Płynne znikanie */
+  }
+  
+  #captcha-container {
+    display: none; /* Początkowo reCAPTCHA jest ukryta */
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  #captcha-container.show {
+    display: block;
+    opacity: 1;
+  }
