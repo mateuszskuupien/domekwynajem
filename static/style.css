@@ -1,105 +1,209 @@
-/* Global Styles */
+/* --------------------------------------
+   1. RESET & GLOBAL STYLES
+-------------------------------------- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    font-weight: 100;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 h2, p {
-    font-family: 'Lato', sans-serif;
-    font-weight: 100;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-button, .scrollToTopBtn {
-    font-family: 'Inter', sans-serif;
-    font-weight: 100;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+button,
+.scrollToTopBtn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Section Styles */
-.first, .second, .third, .fourth, .fifth, .contact {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.first {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
-    url('/static/images/section1.jpg') center/cover no-repeat;
-    animation: moveBackground 45s ease-in-out infinite;
-    flex-direction: column;
-}
-
-.buttons-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    margin-top: 20px;
-}
-
+/* --------------------------------------
+ 2. BUTTON STYLES
+-------------------------------------- */
 button {
-    padding: 1rem 3rem;
-    background: rgba(66, 66, 66, 0.7);
-    font-size: 1.125rem;
-    letter-spacing: 1.2px;
-    color: white;
-    border-radius: 20px;
-    border: none;
-    position: relative;
+  padding: 1rem 3rem;
+  background: rgba(66, 66, 66, 0.7);
+  font-size: 1.125rem;
+  letter-spacing: 1.2px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  position: relative;
 }
 
 button:hover {
-    background: #1f1b18;
-    transition: background-color 0.8s ease;
+  background: #1f1b18;
+  transition: background-color 0.8s ease;
 }
 
-/* Star Animations */
-.star-1, .star-2, .star-3, .star-4, .star-5, .star-6 {
-    position: absolute;
-    filter: drop-shadow(0 0 0 #c9b79c);
-    z-index: -5;
-    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+/* --------------------------------------
+ 3. SCROLL TO TOP BUTTON
+-------------------------------------- */
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.625rem 1.25rem;
+  background: none;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
-.star-1 { 
-    top: 20%; left: 20%; width: 1.5rem; 
-    transition-delay: 0.05s; /* Opóźnienie dla star-1 */
+.scrollToTopBtn:hover {
+  background-color: #555555;
 }
-.star-2 { 
-    top: 45%; left: 45%; width: 1rem; 
-    transition-delay: 0.1s; /* Opóźnienie dla star-2 */
+
+/* --------------------------------------
+ 4. SECTION LAYOUT
+-------------------------------------- */
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
 }
-.star-3 { 
-    top: 40%; left: 40%; width: 0.5rem; 
-    transition-delay: 0.2s; /* Opóźnienie dla star-3 */
+
+.reveal {
+  opacity: 0;
+  background-color: #000;
+  transition: opacity 1.5s ease-in-out, background-color 0.8s ease-in-out;
 }
-.star-4 { 
-    top: 20%; left: 40%; width: 0.75rem; 
-    transition-delay: 0.3s; /* Opóźnienie dla star-4 */
+
+.reveal.visible {
+  opacity: 1;
+  background-color: transparent;
 }
-.star-5 { 
-    top: 25%; left: 45%; width: 1rem; 
-    transition-delay: 0.35s; /* Opóźnienie dla star-5 */
+
+.separator {
+  height: 30px;
+  background: linear-gradient(to right, #111, #222, #111);
+  width: 100%;
 }
-.star-6 { 
-    top: 5%; left: 50%; width: 0.5rem; 
-    transition-delay: 0.4s; /* Opóźnienie dla star-6 */
+
+/* --------------------------------------
+ 5. TEXT & IMAGE CONTAINERS
+-------------------------------------- */
+.section .text,
+.section .image-container {
+  width: 50%;
+  height: 100%;
 }
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to bottom, #555555, #3f3f3f);
+  color: whitesmoke;
+  font-size: 1rem;
+  text-align: right;
+  line-height: 3rem;
+  letter-spacing: 3px;
+}
+
+.text-wrapper {
+  padding: 3rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* --------------------------------------
+ 6. BACKGROUND IMAGES & SECTIONS
+-------------------------------------- */
+.first,
+.second,
+.third,
+.fourth,
+.fifth,
+.contact {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.first {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('/static/images/section1.jpg') center/cover no-repeat;
+  animation: moveBackground 45s ease-in-out infinite;
+  flex-direction: column;
+}
+
+.photo2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section2.jpg') center/cover no-repeat;
+}
+
+.photo3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section3.jpg') center/cover no-repeat;
+}
+
+.photo4 {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section4.jpg') center/cover no-repeat;
+}
+
+.photo5 {
+  background: url('/static/images/section5.jpg') center/cover no-repeat;
+}
+
+/* --------------------------------------
+ 7. BUTTON CONTAINER
+-------------------------------------- */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+/* --------------------------------------
+ 8. STAR ANIMATIONS
+-------------------------------------- */
+.star-1,
+.star-2,
+.star-3,
+.star-4,
+.star-5,
+.star-6 {
+  position: absolute;
+  filter: drop-shadow(0 0 0 #c9b79c);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+.star-1 { top: 20%; left: 20%; width: 1.5rem; transition-delay: 0.05s; }
+.star-2 { top: 45%; left: 45%; width: 1rem; transition-delay: 0.1s; }
+.star-3 { top: 40%; left: 40%; width: 0.5rem; transition-delay: 0.2s; }
+.star-4 { top: 20%; left: 40%; width: 0.75rem; transition-delay: 0.3s; }
+.star-5 { top: 25%; left: 45%; width: 1rem; transition-delay: 0.35s; }
+.star-6 { top: 5%; left: 50%; width: 0.5rem; transition-delay: 0.4s; }
 
 button:hover .star-1 { top: -80%; left: -30%; filter: drop-shadow(0 0 10px #ededed); z-index: 2; }
 button:hover .star-2 { top: -25%; left: 10%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
@@ -108,236 +212,348 @@ button:hover .star-4 { top: 30%; left: 80%; filter: drop-shadow(0 0 10px #d8c9ac
 button:hover .star-5 { top: 25%; left: 115%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
 button:hover .star-6 { top: 5%; left: 60%; filter: drop-shadow(0 0 10px #d8c9ac); z-index: 2; }
 
-.fil0 { fill: #d8c9ac; }
-
-/* Scroll-to-Top Button */
-.scrollToTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 0.625rem 1.25rem;
-    background: none;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
+.fil0 {
+  fill: #d8c9ac;
 }
 
-.scrollToTopBtn:hover {
-    background-color: #555555;
-}
-
-/* Section Layout */
-.section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.reveal {
-    opacity: 0;
-    background-color: #000;
-    transition: opacity 1.5s ease-in-out, background-color 0.8s ease-in-out;
-}
-
-.reveal.visible {
-    opacity: 1;
-    background-color: transparent;
-}
-
-.separator {
-    height: 30px;
-    background: linear-gradient(to right, #111, #222, #111);
-    width: 100%;
-}
-
-/* Text and Image Containers */
-.section .text, .section .image-container {
-    width: 50%;
-    height: 100%;
-}
-
-.text {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: whitesmoke;
-    font-size: 1rem;
-    text-align: right;
-    line-height: 3rem;
-    letter-spacing: 3px;
-    background: linear-gradient(to bottom, #555555, #3f3f3f);
-}
-
-.text-wrapper {
-    padding: 3rem;
-}
-
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-/* Contact Section */
+/* --------------------------------------
+ 9. CONTACT SECTION
+-------------------------------------- */
 .contact {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
-    url('/static/images/section7.jpg') center/cover no-repeat;
-    animation: moveBackground 45s ease-in-out infinite;
-    color: #fff;
-    padding: 3rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('/static/images/section7.jpg') center/cover no-repeat;
+  animation: moveBackground 45s ease-in-out infinite;
+  color: #fff;
+  padding: 3rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.contact-map {
+  flex: 1;
+  min-width: 500px;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 10px;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 500px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.contact-form h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  color: whitesmoke;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: whitesmoke;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background-color 0.5s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgb(198, 198, 198);
+  opacity: 1;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-form button {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.contact-form .contact-address, .place-address {
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+}
+
+/* --------------------------------------
+ 10. ERROR POPUP
+-------------------------------------- */
+.error-popup {
+  position: fixed;
+  bottom: 20px;
+  left: -300px;
+  background-color: #f44336;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
+  z-index: 9999;
+  min-width: 250px;
+  text-align: center;
+  transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.error-popup.show {
+  opacity: 1;
+  left: 20px;
+}
+
+.error-popup.hide {
+  opacity: 0;
+  left: -300px;
+}
+
+/* --------------------------------------
+ 11. CAPTCHA
+-------------------------------------- */
+#captcha-container {
+  display: none;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#captcha-container.show {
+  display: block;
+  opacity: 1;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(to right, #2c2c2c, #3a3a3a);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+  min-height: 20px;
+  padding: 8px 10px;
+}
+
+footer .social_icon,
+footer .menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 0;
+  flex-wrap: wrap;
+}
+
+footer .social_icon li,
+footer .menu li {
+  list-style: none;
+}
+
+footer .social_icon li a {
+  font-size: 1.2em;
+  color: #bbb;
+  margin: 0 6px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+footer .social_icon li a {
+  font-size: 1.2em;
+  color: #bbb;
+  margin: 0 6px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+footer .social_icon li a:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Facebook */
+footer .social_icon li a:hover ion-icon[name="logo-facebook"] {
+  color: #1877f2;
+}
+
+/* Twitter */
+footer .social_icon li a:hover ion-icon[name="logo-twitter"] {
+  color: #1da1f2;
+}
+
+/* LinkedIn */
+footer .social_icon li a:hover ion-icon[name="logo-linkedin"] {
+  color: 	#0077B5;
+}
+
+/* Instagram */
+footer .social_icon li a:hover ion-icon[name="logo-instagram"] {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  border-radius: 6px;
+}
+
+
+footer .menu li a {
+  font-size: 0.9em;
+  color: #bbb;
+  margin: 0 6px;
+  display: inline-block;
+  transition: 0.3s;
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+footer .menu li a:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+.developersocials {
+  color: #bbb;
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 6px;
+  font-size: 0.8em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+footer .developersocials a {
+  text-decoration: none;
+  color: #bbb;
+}
+footer .developersocials a:hover {
+  color: #f08080;
+  transition: 0.3s ease;
+}
+
+/* --------------------------------------
+ 12. KEYFRAMES
+-------------------------------------- */
+@keyframes moveBackground {
+  0% { background-position: center top; }
+  50% { background-position: center bottom; }
+  100% { background-position: center top; }
+}
+
+/* --------------------------------------
+   4. SECTION LAYOUT
+-------------------------------------- */
+@media (max-width: 1064px) {
+    .section .text {
+      width: 100%;
+      height: 40%;
   }
-  
+    .section .image-container {
+    width: 100%;
+    height: 60%;
+  }
   .contact-content {
     display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 1200px; /* Możesz dostosować szerokość głównego kontenera */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Cień wokół głównego kontenera */
-    border-radius: 15px; /* Zaokrąglone rogi dla całego kontenera */
-    overflow: hidden;
+    flex-direction: column-reverse; /* Odwracamy kolejność elementów */
+    align-items: center; /* Wyśrodkowanie elementów */
+    height: 80vh; /* Cała wysokość ekranu */
   }
-  
+
   .contact-map {
-    flex: 1;
-    min-width: 500px;
+    width: 60%; /* Mapa na 60% szerokości */
+    height: 50%; /* Mapa na 60% wysokości */
   }
-  
+
   .contact-map iframe {
     width: 100%;
     height: 100%;
-    border: 0;
-    border-radius: 10px; /* Zaokrąglone rogi mapy */
   }
-  
+
   .contact-form {
-    flex: 1;
-    min-width: 500px;
-    background-color: rgba(255, 255, 255, 0.1); /* Lekko przezroczyste tło */
-    padding: 2rem;
-    border-radius: 10px; /* Zaokrąglone rogi formularza */
+    width: 60%; /* Formularz na 60% szerokości */
+    height: 30%; /* Formularz na 40% wysokości */
   }
-  
-  .contact-form h2 {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
+  .contact h2{
+    margin-bottom: 2rem;
   }
-  
-  .contact-subtitle {
-    font-size: 1rem;
-    color: whitesmoke;
-    margin-bottom: 1.5rem;
+  .contact-subtitle{
+    margin-bottom: 4rem;
   }
-  
-  .contact-form form {
-    display: flex;
+}
+@media (max-width: 480px) {
+  .contact-content {
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    min-height: auto;
+    height: auto;
+    padding: 0.5rem;
     gap: 1rem;
   }
-  
-  .contact-form input,
-  .contact-form textarea {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: whitesmoke;
-    border: none;
-    padding: 0.8rem;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: background-color 0.5s ease;
+
+  .contact-map,
+  .contact-form {
+    width: 90%;
+    height: auto;
+    min-height: 180px;
   }
-  
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder {
-    color: rgb(198, 198, 198);
-    opacity: 1;
+
+  .contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
   }
-  .contact-form .contact-address {
-    margin-top: 20px;
-    font-family: 'Lato' 'sans-serif';
-    font-weight: 100;
+
+  .contact-form {
+    padding: 0.5rem;
   }
-  
-  .contact-form textarea {
-    resize: none;
+
+  .contact h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
   }
-  
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.3);
+
+  .contact-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
   }
-  .contact-form button{
-    width: 50%;
-    margin: 0 auto;
-    display: block;
-  }
-    
-/* Background Images */
-.photo2 { 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section2.jpg') center/cover no-repeat;
+}
+.text-wrapper p{
+  font-size: 0.8rem;
+}
+.text-wrapper h2{
+  font-size: 1rem;
 }
 
-.photo3 {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section3.jpg') center/cover no-repeat;
-}
-
-.photo4 {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/static/images/section4.jpg') center/cover no-repeat;
-}
-
-.photo5 {
-    background: url('/static/images/section5.jpg') center/cover no-repeat;
-}
-
-/* Keyframe Animations */
-@keyframes moveBackground {
-    0% { background-position: center top; }
-    50% { background-position: center bottom; }
-    100% { background-position: center top; }
-}
-/* Styl dla popupu błędu */
-.error-popup {
-    position: fixed;
-    bottom: 20px;
-    left: -300px; /* Początkowa pozycja poza ekranem */
-    background-color: #f44336; /* Jaśniejszy czerwony */
-    color: white;
-    padding: 12px 18px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    font-size: 18px; /* Większa czcionka */
-    z-index: 9999;
-    min-width: 250px;
-    text-align: center;
-    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Animacja wślizgiwania i znikania */
-    opacity: 0; /* Początkowo popup jest niewidoczny */
-  }
-  
-  /* Po dodaniu klasy .show popup wślizguje się na ekran */
-  .error-popup.show {
-    opacity: 1; /* Zwiększamy przezroczystość */
-    left: 20px; /* Końcowa pozycja na ekranie */
-  }
-  
-  /* Kiedy ma zniknąć */
-  .error-popup.hide {
-    opacity: 0;
-    left: -300px; /* Wślizguje się poza ekran */
-    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Płynne znikanie */
-  }
-  
-  #captcha-container {
-    display: none; /* Początkowo reCAPTCHA jest ukryta */
-    margin-top: 20px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  #captcha-container.show {
-    display: block;
-    opacity: 1;
-  }

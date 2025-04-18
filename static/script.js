@@ -1,32 +1,44 @@
+// ===============================================
+// INICJALIZACJA I USTAWIENIA POCZĄTKOWE
+// ===============================================
+
 // Flaga sprawdzająca, czy przewijanie jest w toku
 let isScrolling = false;
 
-// 1. Funkcja płynnego scrolla między sekcjami
-document.addEventListener("DOMContentLoaded", function () {
-  const sections = document.querySelectorAll("section");
-  const options = {
-    root: null,
-    threshold: 0.05, // 5% sekcji musi być widoczne
-  };
+// Przewinięcie na samą górę po załadowaniu
+// window.scrollTo(0, 0);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !isScrolling) {
-        // Sprawdzamy, czy przewijanie nie jest w toku
-        const targetSection = entry.target;
-        setTimeout(() => {
-          smoothScrollTo(targetSection, 1200); // Wolniejsze przewijanie (1.2 sekundy)
-        }, 50); // Małe opóźnienie przed przewinięciem
-      }
-    });
-  }, options);
+// // ===============================================
+// // 1. OBSERWACJA SEKCJI I AUTOMATYCZNE PRZEWIJANIE
+// // ===============================================
 
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   const sections = document.querySelectorAll("section");
+//   const options = {
+//     root: null,
+//     threshold: 0.05, // 5% sekcji musi być widoczne
+//   };
 
-// 2. Fade-in z czerni dla każdej sekcji poza main
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach((entry) => {
+//       if (entry.isIntersecting && !isScrolling) {
+//         const targetSection = entry.target;
+//         setTimeout(() => {
+//           smoothScrollTo(targetSection, 1200); // Płynne przewijanie do sekcji
+//         }, 50);
+//       }
+//     });
+//   }, options);
+
+//   sections.forEach((section) => {
+//     observer.observe(section);
+//   });
+// });
+
+// ===============================================
+// 2. EFEKT FADE-IN (POKAZYWANIE SEKCJI Z ANIMACJĄ)
+// ===============================================
+
 const fadeSections = document.querySelectorAll(".reveal");
 
 const fadeObserver = new IntersectionObserver(
@@ -34,7 +46,7 @@ const fadeObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        fadeObserver.unobserve(entry.target); // Tylko raz
+        fadeObserver.unobserve(entry.target); // Efekt tylko raz
       }
     });
   },
@@ -47,20 +59,22 @@ fadeSections.forEach((section) => {
   fadeObserver.observe(section);
 });
 
-// 3. Funkcja przewijania do sekcji z przycisku
+// ===============================================
+// 3. PŁYNNE PRZEWIJANIE DO KONKRETNEJ SEKCJI
+// ===============================================
+
 function scrollToSection(sectionId) {
   const targetSection = document.getElementById(sectionId);
   if (targetSection && !isScrolling) {
-    smoothScrollTo(targetSection, 1200); // Wolniejsze przewijanie (1.2 sekundy)
+    smoothScrollTo(targetSection, 1200);
   }
 }
 
 // Funkcja do płynnego przewijania do wybranego elementu
 function smoothScrollTo(element, duration) {
-  if (isScrolling) return; // Jeśli przewijanie już trwa, nie wykonuj niczego
+  if (isScrolling) return;
 
-  isScrolling = true; // Ustawiamy flagę na true, że przewijanie trwa
-
+  isScrolling = true;
   const targetPosition = element.offsetTop;
   const startPosition = window.scrollY;
   const distance = targetPosition - startPosition;
@@ -80,10 +94,11 @@ function smoothScrollTo(element, duration) {
     if (timeElapsed < duration) {
       requestAnimationFrame(animationScroll);
     } else {
-      isScrolling = false; // Po zakończeniu przewijania ustawiamy flagę na false
+      isScrolling = false;
     }
   }
 
+  // Funkcja easing – łagodniejsze przewijanie
   function easeInOutQuad(t, b, c, d) {
     t /= d / 2;
     if (t < 1) return (c / 2) * t * t + b;
@@ -94,28 +109,30 @@ function smoothScrollTo(element, duration) {
   requestAnimationFrame(animationScroll);
 }
 
-// Funkcja przewijania na samą górę
-// Funkcja przewijania na samą górę
-document.getElementById('scrollToTopBtn').addEventListener('click', function () {
-  smoothScrollTo(document.body, 1200); // Przewijanie na samą górę
-});
+// ===============================================
+// 4. PRZYCISK "SCROLL TO TOP" (PRZEWIJANIE NA GÓRĘ)
+// ===============================================
+
+document
+  .getElementById("scrollToTopBtn")
+  .addEventListener("click", function () {
+    smoothScrollTo(document.body, 1200);
+  });
+
 window.addEventListener("scroll", function () {
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-  // Sprawdzamy, czy użytkownik przewinął stronę w dół
-  if (window.scrollY > 100) {
-    scrollToTopBtn.style.display = "block"; // Pokazuje przycisk
-  } else {
-    scrollToTopBtn.style.display = "none"; // Ukrywa przycisk, gdy użytkownik jest na górze
-  }
+  scrollToTopBtn.style.display = window.scrollY > 100 ? "block" : "none";
 });
+
+// ===============================================
+// 5. OBSŁUGA FORMULARZA KONTAKTOWEGO + WALIDACJA
+// ===============================================
 
 document
   .getElementById("contact-form")
   .addEventListener("submit", async function (event) {
     event.preventDefault(); // Zapobiega domyślnemu wysłaniu formularza
 
-    // Pobieramy wartości pól formularza
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const message = document.getElementById("message").value;
@@ -123,54 +140,50 @@ document
     const errorMessage = document.getElementById("error-message");
     const captchaContainer = document.getElementById("captcha-container");
 
-    // Regex do walidacji e-maila
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-    // Funkcja, która pokazuje popup
+    // Funkcja pokazująca błąd
     function showErrorPopup(message) {
       errorMessage.textContent = message;
-      errorPopup.classList.remove("hide"); // Usuń klasę hide
-      errorPopup.classList.add("show"); // Dodaj klasę show (wślizguje się z boku)
+      errorPopup.classList.remove("hide");
+      errorPopup.classList.add("show");
     }
 
-    // Funkcja, która ukrywa popup
+    // Funkcja ukrywająca błąd
     function hideErrorPopup() {
-      errorPopup.classList.remove("show"); // Usuwamy klasę show
-      errorPopup.classList.add("hide"); // Dodajemy klasę hide (zniknięcie)
+      errorPopup.classList.remove("show");
+      errorPopup.classList.add("hide");
     }
 
-    // Sprawdzamy, czy wszystkie pola zostały wypełnione
+    // Walidacja pól formularza
     if (!name || !email || !message) {
-      showErrorPopup("Proszę wypełnić wszystkie pola!"); // Pokazuje popup z błędem
-      setTimeout(() => hideErrorPopup(), 3000); // Ukrywa popup po 3 sekundach
-      return; // Zatrzymuje dalsze działanie funkcji
-    }
-
-    // Sprawdzamy poprawność e-maila za pomocą regex
-    if (!emailRegex.test(email)) {
-      showErrorPopup("Proszę podać poprawny adres e-mail!"); // Pokazuje popup z błędem
-      setTimeout(() => hideErrorPopup(), 3000); // Ukrywa popup po 3 sekundach
-      return; // Zatrzymuje dalsze działanie funkcji
-    }
-
-    // Pokaż reCAPTCHA dopiero po kliknięciu przycisku "Wyślij"
-    captchaContainer.style.display = "block"; // Pokazuje reCAPTCHA
-    setTimeout(() => captchaContainer.classList.add("show"), 10); // Płynne wyświetlanie
-
-    // Zatrzymujemy dalszą część funkcji, dopóki użytkownik nie zaznaczy checkboxa
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-      showErrorPopup("Proszę przejść CAPTCHA!"); // Jeśli nie przeszło reCAPTCHA
+      showErrorPopup("Proszę wypełnić wszystkie pola!");
       setTimeout(() => hideErrorPopup(), 3000);
       return;
     }
 
-    // Wysyłamy zapytanie do API Hunter.io w celu weryfikacji, czy e-mail jest poprawny
+    if (!emailRegex.test(email)) {
+      showErrorPopup("Proszę podać poprawny adres e-mail!");
+      setTimeout(() => hideErrorPopup(), 3000);
+      return;
+    }
+
+    // Pokaż reCAPTCHA
+    captchaContainer.style.display = "block";
+    setTimeout(() => captchaContainer.classList.add("show"), 10);
+
+    // Sprawdzenie reCAPTCHA
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+      showErrorPopup("Proszę przejść CAPTCHA!");
+      setTimeout(() => hideErrorPopup(), 3000);
+      return;
+    }
+
+    // Weryfikacja e-maila przez API
     const response = await fetch("/verify_email", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email }),
     });
 
@@ -179,13 +192,11 @@ document
     if (!result.valid) {
       showErrorPopup(result.message);
       setTimeout(() => hideErrorPopup(), 3000);
-      return; // Zatrzymuje dalsze działanie funkcji
+      return;
     }
 
-    // Jeśli wszystko jest OK, ukrywamy komunikat o błędzie
-    hideErrorPopup(); // Ukrywa popup w przypadku sukcesu
-
-    // Jeśli wszystko jest OK, wyświetlamy powiadomienie o sukcesie
+    // Sukces – komunikat
+    hideErrorPopup();
     Swal.fire({
       title: "Wiadomość wysłana!",
       text: "Dziękujemy za kontakt, odpowiemy jak najszybciej.",
@@ -193,21 +204,20 @@ document
       confirmButtonText: "OK",
     });
 
-    // Resetuje formularz i reCAPTCHA
-    const formData = new FormData(event.target); // Pobiera dane formularza
-    event.target.reset(); // Resetuje formularz
-    grecaptcha.reset(); // Resetuje reCAPTCHA
+    // Reset formularza i reCAPTCHA
+    const formData = new FormData(event.target);
+    event.target.reset();
+    grecaptcha.reset();
     captchaContainer.classList.remove("show");
     captchaContainer.style.display = "none";
-    // Wyślij formularz asynchronicznie do serwera
+
+    // Wysłanie formularza do serwera
     const formResponse = await fetch("/", {
       method: "POST",
       body: formData,
     });
 
-    // Obsługuje odpowiedź
     if (formResponse.status !== 204) {
       Swal.fire("Ups!", "Coś poszło nie tak...", "error");
     }
   });
-

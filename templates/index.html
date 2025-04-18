@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bachuldomki</title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?display=swap&family=Lato:ital,wght@0,300;0,700;1,300;1,700&family=Inter:ital,wght@0,200;0,300;0,500;1,200;1,300;1,500&family=JetBrains+Mono:ital,wght@0,800;1,800" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
     <section class="first" id="first">
-        <img src="static/images/logo.png" alt="" class="mainlogo">
+        <img src="static/images/logo.png" alt="" class="mainlogo img-fluid">
         <div class="buttons-container">
             <button onclick="scrollToSection('second')">OFERTA
                 <div class="star-1">
@@ -79,7 +81,9 @@
               </button>
         </div>
     </section>
+
     <div class="separator"></div>
+
     <section class="second reveal" id="second">
         <div class="section">
           <div class="text">
@@ -141,7 +145,6 @@
     <div class="separator"></div>
     <section class="contact reveal" id="contact">
       <div class="contact-content">
-        <!-- Mapa po lewej -->
         <div class="contact-map">
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=20.035%2C49.460%2C20.085%2C49.480&layer=mapnik&marker=49.471444%2C20.049722"
@@ -150,21 +153,18 @@
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-      
-        <!-- Formularz po prawej -->
         <div class="contact-form">
           <h2>KONTAKT</h2>
           <p class="contact-subtitle">Masz pytania? Chętnie odpowiemy!</p>
           <form id="contact-form" method="POST">
-            <input type="text" name="name" id="name" placeholder="IMIĘ...">
-            <input type="email" name="email" id="email" placeholder="ADRES E-MAIL...">
-            <textarea name="message" id="message" rows="5" placeholder="ZAPYTAJ O DOSTĘPNOŚĆ..."></textarea>
+            <input type="text" name="name" id="name" placeholder="Imię i nazwisko...">
+            <input type="email" name="email" id="email" placeholder="Adres e-mail..">
+            <textarea name="message" id="message" rows="5" placeholder="Zapytaj o dostępność..."></textarea>
             <div id="captcha-container" class="hide">
               <div class="g-recaptcha" data-sitekey="6LfY6hQrAAAAAJpLNbEjVR5GfncaAfjO_RcyDBTl"></div>
             </div>
-            <button type="submit">WYŚLIJ</button>
+            <button type="submit" class="p-2">WYŚLIJ</button>
           </form>
-          <p class="contact-address">ALEJA TYSIĄCLECIA 54, 34-400 NOWY TARG</p>
           <div id="error-popup" class="error-popup">
             <p id="error-message">Proszę wypełnić wszystkie pola poprawnie!</p>
           </div>
@@ -172,6 +172,15 @@
       </div>
     </section>
     <button id="scrollToTopBtn" class="scrollToTopBtn">↑</button>
+    <footer>
+      <ul class="social_icon">
+        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+      </ul>
+      <p class="developersocials">&copy; 2025 <a href="https://linktr.ee/mateuszskuupien" target="_blank">Mateusz Skupień</a> | All Rights Reserved</p>
+    </footer>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
